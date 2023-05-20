@@ -32,7 +32,7 @@ jobs:
 
     - name: Configure AWS Credentials
       if: github.repository_owner == 'Authress' && github.ref == 'refs/heads/main'
-      uses: aws-actions/configure-aws-credentials@036a4a1ddf2c0e7a782dca6e083c6c53e5d90321
+      uses: aws-actions/configure-aws-credentials@d713a182c5467df241c7509cf48b1c382c46080d
       with:
         aws-region: eu-west-1
         role-duration-seconds: 3600

@@ -322,15 +322,7 @@ module.exports = {
             PointInTimeRecoveryEnabled: true
           },
           ReadProvisionedThroughputSettings: {
-            ReadCapacityUnits: 1,
-            ReadCapacityAutoScalingSettings: {
-              MaxCapacity: 1,
-              MinCapacity: 1,
-              SeedCapacity: 1,
-              TargetTrackingScalingPolicyConfiguration: {
-                TargetValue: 1
-              }
-            }
+            ReadCapacityUnits: 1
           },
           Tags: [
             { Key: 'Service', Value: { Ref: 'serviceName' } }

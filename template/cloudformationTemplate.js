@@ -4,7 +4,7 @@ module.exports = {
   Parameters: {
     serviceName: {
       Type: 'String',
-      Default: 'vanishing-keys',
+      Default: 'VanishingKeys',
       Description: 'The name of the microservice'
     },
     serviceDescription: {
@@ -277,65 +277,65 @@ module.exports = {
         Name: { 'Fn::Sub': '${dnsName}.${hostedName}.' },
         Type: 'A'
       }
-    }
+    },
 
-    // DynamoDBSecretsTable: {
-    //   Type: 'AWS::DynamoDB::GlobalTable',
-    //   Properties: {
-    //     TableName: { 'Fn::Sub': '${serviceName}-secrets-prod' },
-    //     AttributeDefinitions: [
-    //       {
-    //         AttributeName: 'secretsId',
-    //         AttributeType: 'S'
-    //       }
-    //     ],
-    //     KeySchema: [
-    //       {
-    //         AttributeName: 'secretsId',
-    //         KeyType: 'HASH'
-    //       }
-    //     ],
-    //     BillingMode: 'PROVISIONED',
-    //     WriteProvisionedThroughputSettings: {
-    //       // WriteCapacityAutoScalingSettings: {
-    //       //   MaxCapacity: 1,
-    //       //   MinCapacity: 1,
-    //       //   SeedCapacity: 1,
-    //       //   TargetTrackingScalingPolicyConfiguration: {
-    //       //     TargetValue: 1
-    //       //   }
-    //       // }
-    //     },
-    //     SSESpecification: {
-    //       SSEEnabled: false
-    //     },
-    //     StreamSpecification: {
-    //       StreamViewType: 'NEW_AND_OLD_IMAGES'
-    //     },
-    //     TimeToLiveSpecification: {
-    //       AttributeName: 'TTL',
-    //       Enabled: true
-    //     },
-    //     Replicas: [{
-    //       Region: { Ref: 'AWS::Region' },
-    //       PointInTimeRecoverySpecification: {
-    //         PointInTimeRecoveryEnabled: true
-    //       },
-    //       ReadProvisionedThroughputSettings: {
-    //         ReadCapacityUnits: 1
-    //       },
-    //       Tags: [
-    //         { Key: 'Service', Value: { Ref: 'serviceName' } }
-    //       ]
-    //     }]
-    //     // [{
-    //     //   Region: { 'Fn::FindInMap': ['regionKeyMap', { Ref: 'AWS::Region' }, 'mirrorRegion'] },
-    //     //   Tags: [
-    //     //     { Key: 'Service', Value: { Ref: 'serviceName' } }
-    //     //   ]
-    //     // }]
-    //   }
-    // }
+    DynamoDBSecretsTable: {
+      Type: 'AWS::DynamoDB::GlobalTable',
+      Properties: {
+        TableName: { 'Fn::Sub': '${serviceName}-secrets-prod' },
+        AttributeDefinitions: [
+          {
+            AttributeName: 'secretsId',
+            AttributeType: 'S'
+          }
+        ],
+        KeySchema: [
+          {
+            AttributeName: 'secretsId',
+            KeyType: 'HASH'
+          }
+        ],
+        BillingMode: 'PROVISIONED',
+        WriteProvisionedThroughputSettings: {
+          // WriteCapacityAutoScalingSettings: {
+          //   MaxCapacity: 1,
+          //   MinCapacity: 1,
+          //   SeedCapacity: 1,
+          //   TargetTrackingScalingPolicyConfiguration: {
+          //     TargetValue: 1
+          //   }
+          // }
+        },
+        SSESpecification: {
+          SSEEnabled: false
+        },
+        StreamSpecification: {
+          StreamViewType: 'NEW_AND_OLD_IMAGES'
+        },
+        TimeToLiveSpecification: {
+          AttributeName: 'TTL',
+          Enabled: true
+        },
+        Replicas: [{
+          Region: { Ref: 'AWS::Region' },
+          PointInTimeRecoverySpecification: {
+            PointInTimeRecoveryEnabled: true
+          },
+          ReadProvisionedThroughputSettings: {
+            ReadCapacityUnits: 1
+          },
+          Tags: [
+            { Key: 'Service', Value: { Ref: 'serviceName' } }
+          ]
+        }]
+        // [{
+        //   Region: { 'Fn::FindInMap': ['regionKeyMap', { Ref: 'AWS::Region' }, 'mirrorRegion'] },
+        //   Tags: [
+        //     { Key: 'Service', Value: { Ref: 'serviceName' } }
+        //   ]
+        // }]
+      }
+    }
   }
 };
       

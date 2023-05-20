@@ -73,6 +73,7 @@ commander
           stackName: packageMetadata.name
         };
         const parameters = {
+          serviceName: packageMetadata.name,
           dnsName: 'vanish',
           hostedName: 'authress.io',
           hostedZoneId: 'Z0450507492KPW6PS5CR'

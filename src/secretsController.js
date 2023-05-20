@@ -1,9 +1,14 @@
+const { Duration } = require('luxon');
+const base64url = require('base64url');
 const shortUuid = require('short-uuid');
+const crypto = require('crypto');
+
 const secretsManager = require('./secretsManager');
 
 class SecretsController {
   async createSecret(request) {
-    const secretId = shortUuid('abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ346789').generate();
+    const randomBytes = base64url.encode(crypto.randomBytes(64));
+    const secretId = `${shortUuid('abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ346789').generate()}-${randomBytes}`;
 
     const encryptedSecret = request.body?.encryptedSecret;
     if (!encryptedSecret || typeof encryptedSecret !== 'string') {
@@ -22,7 +27,21 @@ class SecretsController {
         }
       };
     }
-    await secretsManager.createSecret(secretId, encryptedSecret);
+    const validTtlDurations = {
+      PT10M: 'PT10M',
+      PT24H: 'PT24H',
+      P7D: 'P7D'
+    };
+    if (request.body.duration && !validTtlDurations[request.body.duration]) {
+      return {
+        statusCode: 400,
+        body: {
+          title: 'Invalid Duration specified for secret lifetime'
+        }
+      };
+    }
+    const ttlDuration = Duration.fromISO(request.body.duration || 'PT7D');
+    await secretsManager.createSecret(secretId, encryptedSecret, ttlDuration);
 
     return {
       statusCode: 201,

@@ -37,7 +37,7 @@ jobs:
         aws-region: eu-west-1
         role-duration-seconds: 3600
         role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubRunnerAssumedRole
-        role-session-name: GitHubRunner-${{ github.repository_owner }}-OTS-${{ github.run_number }}
+        role-session-name: GitHubRunner-${{ github.repository_owner }}-Vanish-${{ github.run_number }}
     - name: Deploy
       if: github.repository_owner == 'Authress' && github.ref != 'refs/heads/main'
       env:

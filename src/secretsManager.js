@@ -1,10 +1,10 @@
 
 const { DynamoDB } = require('aws-sdk');
-const { DateTime, Duration } = require('luxon');
+const { DateTime } = require('luxon');
 
 const logger = require('./logger');
 
-const dynamoDbTable = 'OneTimeSecrets-secrets-prod';
+const dynamoDbTable = 'VanishingKeys-secrets-prod';
 
 const dynamoDbClient = new DynamoDB.DocumentClient();
 
@@ -18,7 +18,7 @@ class SecretsManager {
         encryptedSecret,
         createdTime: now.toISO(),
         lastUpdated: now.toISO(),
-        TTL: Math.round(now.plus(Duration.fromISO(ttlDuration || 'PT7D')).toSeconds())
+        TTL: Math.round(now.plus(ttlDuration).toSeconds())
       },
       ConditionExpression: 'attribute_not_exists(secretId)'
     };
@@ -38,14 +38,14 @@ class SecretsManager {
       TableName: dynamoDbTable,
       Key: { secretId },
       ConditionExpression: 'attribute_exists(secretId)',
-      UpdateExpression: 'set #TTL = :TTL, readAtTime = :readAtTime',
+      UpdateExpression: 'set #TTL = :TTL, consumedAtTime = :consumedAtTime',
       ExpressionAttributeNames: {
         '#TTL': 'TTL',
-        '#readAtTime': 'readAtTime'
+        '#consumedAtTime': 'consumedAtTime'
       },
       ExpressionAttributeValues: {
-        ':TTL': Math.round(now.plus({ seconds: 60 }).toSeconds()),
-        ':readAtTime': now.toISO()
+        ':TTL': Math.round(now.plus({ seconds: 30 }).toSeconds()),
+        ':consumedAtTime': now.toISO()
       },
       ReturnValues: 'ALL_NEW'
     };

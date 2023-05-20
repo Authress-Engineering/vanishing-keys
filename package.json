@@ -1,16 +1,18 @@
 {
-  "name": "OneTimeSecrets",
+  "name": "VanishingKeys",
   "version": "0.0.0",
   "description": "Share a secret securely with anyone.",
   "author": "Authress Developers <developers@authress.io>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Authress/one-time-secret.git"
+    "url": "https://github.com/Authress/vanishing-keys.git"
   },
   "license": "Apache-2.0",
   "keywords": [
     "AWS",
     "One Time Secret",
+    "Vanish",
+    "Vanishing Keys",
     "Share credentials",
     "secretly",
     "Authress"
@@ -24,6 +26,7 @@
   "dependencies": {
     "agentkeepalive": "^4.2.0",
     "authress-sdk": "^1.2.14",
+    "base64url": "^3.0.1",
     "cfn-response": "^1.0.1",
     "cookie": "^0.4.1",
     "error-object-polyfill": "^1.1.14",

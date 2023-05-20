@@ -1,15 +1,15 @@
 module.exports = {
   AWSTemplateFormatVersion: '2010-09-09',
-  Description: 'Authress OTS',
+  Description: 'Authress Vanish',
   Parameters: {
     serviceName: {
       Type: 'String',
-      Default: 'one-time-secret',
+      Default: 'vanishing-keys',
       Description: 'The name of the microservice'
     },
     serviceDescription: {
       Type: 'String',
-      Default: 'The OTS service',
+      Default: 'The Vanish service',
       Description: 'Service description used for AWS resources'
     },
     dnsName: {
@@ -43,6 +43,7 @@ module.exports = {
         },
         MemorySize: 128,
         Timeout: 10,
+        ReservedConcurrentExecutions: 5,
         Role: { 'Fn::GetAtt': ['LambdaRole', 'Arn'] },
         Tags: [{ Key: 'Service', Value: { Ref: 'serviceName' } }]
       }

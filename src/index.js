@@ -81,16 +81,6 @@ try {
   api.get('/secrets/{secretId}', request => secretsController.getSecret(request));
   api.delete('/secrets/{Id}', request => secretsController.deleteSecret(request));
 
-  api.get('/', () => {
-    // const openapi = require('./openapi');
-    return { body: {}, statusCode: 200 };
-  });
-
-  api.get('/.well-known/openapi', () => {
-    // const openapi = require('./openapi');
-    return { body: {}, statusCode: 200 };
-  });
-
   api.options('/{proxy+}', () => {
     return {
       statusCode: 200,

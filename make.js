@@ -55,7 +55,7 @@ commander
 
 commander
   .command('deploy')
-  .description('Deploys the OTS to AWS')
+  .description('Deploys the Vanish to AWS')
   .action(async () => {
     console.log('After build package %s (%s)', packageMetadata.name, version);
     console.log('');
@@ -73,7 +73,7 @@ commander
           stackName: packageMetadata.name
         };
         const parameters = {
-          dnsName: 'ots',
+          dnsName: 'vanish',
           hostedName: 'authress.io',
           hostedZoneId: ''
         };

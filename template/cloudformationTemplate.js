@@ -295,17 +295,7 @@ module.exports = {
             KeyType: 'HASH'
           }
         ],
-        BillingMode: 'PROVISIONED',
-        WriteProvisionedThroughputSettings: {
-          WriteCapacityAutoScalingSettings: {
-            MaxCapacity: 1,
-            MinCapacity: 1,
-            SeedCapacity: 1,
-            TargetTrackingScalingPolicyConfiguration: {
-              TargetValue: 100
-            }
-          }
-        },
+        BillingMode: 'PAY_PER_REQUEST',
         SSESpecification: {
           SSEEnabled: false
         },
@@ -320,9 +310,6 @@ module.exports = {
           Region: { Ref: 'AWS::Region' },
           PointInTimeRecoverySpecification: {
             PointInTimeRecoveryEnabled: true
-          },
-          ReadProvisionedThroughputSettings: {
-            ReadCapacityUnits: 1
           },
           Tags: [
             { Key: 'Service', Value: { Ref: 'serviceName' } }

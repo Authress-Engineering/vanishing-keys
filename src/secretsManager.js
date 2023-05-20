@@ -52,6 +52,9 @@ class SecretsManager {
 
     try {
       const result = await dynamoDbClient.update(params).promise();
+      if (result?.Attributes?.TTL && DateTime.fromSeconds(result.Attributes.TTL) < DateTime.utc()) {
+        return null;
+      }
       return result.Attributes;
     } catch (error) {
       if (error.code === 'ConditionalCheckFailedException') {

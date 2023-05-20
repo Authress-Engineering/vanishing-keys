@@ -35,6 +35,19 @@ class SecretsManager {
 
   async fetchAndDeleteSecret(secretId) {
     const now = DateTime.utc();
+
+    const getParams = {
+      TableName: dynamoDbTable,
+      Key: {
+        secretId
+      }
+    };
+
+    const result = await dynamoDbClient.get(getParams).promise();
+    if (result.Item?.TTL && DateTime.fromSeconds(result.Item.TTL) < DateTime.utc()) {
+      return null;
+    }
+
     const params = {
       TableName: dynamoDbTable,
       Key: { secretId },
@@ -52,11 +65,8 @@ class SecretsManager {
     };
 
     try {
-      const result = await dynamoDbClient.update(params).promise();
-      if (result?.Attributes?.TTL && DateTime.fromSeconds(result.Attributes.TTL) < DateTime.utc()) {
-        return null;
-      }
-      return result.Attributes;
+      const updatedResult = await dynamoDbClient.update(params).promise();
+      return updatedResult.Attributes;
     } catch (error) {
       if (error.code === 'ConditionalCheckFailedException') {
         return null;

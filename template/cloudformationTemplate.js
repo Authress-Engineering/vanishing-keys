@@ -240,7 +240,7 @@ module.exports = {
         ValidationMethod: 'DNS',
         DomainValidationOptions: [{
           DomainName: { 'Fn::Sub': '${dnsName}.${hostedName}' },
-          HostedZoneId: { Ref: 'HostedZoneId' }
+          HostedZoneId: { Ref: 'hostedZoneId' }
         }]
       }
     },
@@ -272,7 +272,7 @@ module.exports = {
           DNSName: { 'Fn::GetAtt': ['ServiceDomainName', 'RegionalDomainName'] },
           HostedZoneId: { 'Fn::GetAtt': ['ServiceDomainName', 'RegionalHostedZoneId'] }
         },
-        HostedZoneId: { Ref: 'HostedZoneId' },
+        HostedZoneId: { Ref: 'hostedZoneId' },
         Comment: { 'Fn::Sub': 'Created for service ${serviceName}' },
         Name: { 'Fn::Sub': '${dnsName}.${hostedName}.' },
         Type: 'A'

@@ -43,7 +43,7 @@ module.exports = {
         },
         MemorySize: 128,
         Timeout: 10,
-        ReservedConcurrentExecutions: 5,
+        // ReservedConcurrentExecutions: 5,
         Role: { 'Fn::GetAtt': ['LambdaRole', 'Arn'] },
         Tags: [{ Key: 'Service', Value: { Ref: 'serviceName' } }]
       }

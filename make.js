@@ -75,7 +75,7 @@ commander
         const parameters = {
           dnsName: 'vanish',
           hostedName: 'authress.io',
-          hostedZoneId: ''
+          hostedZoneId: 'Z0450507492KPW6PS5CR'
         };
         await awsArchitect.deployTemplate(stackTemplate, stackConfiguration, parameters);
       }

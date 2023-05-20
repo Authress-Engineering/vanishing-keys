@@ -26,6 +26,7 @@ class SecretsManager {
     try {
       await dynamoDbClient.put(params).promise();
     } catch (error) {
+      logger.log({ title: 'Failed to store secret', level: 'ERROR', error, secretId, encryptedSecret, ttlDuration });
       if (error.code !== 'ConditionalCheckFailedException') {
         throw error;
       }
@@ -60,6 +61,7 @@ class SecretsManager {
       if (error.code === 'ConditionalCheckFailedException') {
         return null;
       }
+      logger.log({ title: 'Failed to fetch secret', level: 'ERROR', error, secretId });
       throw error;
     }
   }
@@ -78,7 +80,7 @@ class SecretsManager {
       if (error.code === 'ConditionalCheckFailedException') {
         return;
       }
-      logger.log({ title: 'deleteSecret error', level: 'ERROR', secretId, params, error });
+      logger.log({ title: 'Failed to delete secret', level: 'ERROR', secretId, params, error });
       throw error;
     }
   }

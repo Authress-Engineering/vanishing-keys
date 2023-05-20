@@ -285,13 +285,13 @@ module.exports = {
         TableName: { 'Fn::Sub': '${serviceName}-secrets-prod' },
         AttributeDefinitions: [
           {
-            AttributeName: 'secretsId',
+            AttributeName: 'secretId',
             AttributeType: 'S'
           }
         ],
         KeySchema: [
           {
-            AttributeName: 'secretsId',
+            AttributeName: 'secretId',
             KeyType: 'HASH'
           }
         ],

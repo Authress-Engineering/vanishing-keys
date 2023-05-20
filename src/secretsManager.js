@@ -39,7 +39,7 @@ class SecretsManager {
       TableName: dynamoDbTable,
       Key: { secretId },
       ConditionExpression: 'attribute_exists(secretId)',
-      UpdateExpression: 'set #TTL = :TTL, consumedAtTime = :consumedAtTime',
+      UpdateExpression: 'set #TTL = :TTL, #consumedAtTime = :consumedAtTime',
       ExpressionAttributeNames: {
         '#TTL': 'TTL',
         '#consumedAtTime': 'consumedAtTime'

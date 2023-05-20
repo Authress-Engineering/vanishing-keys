@@ -2,6 +2,12 @@
 
 This is the public completely **open source** implementation of how Authress provides the Vanishing Keys service.
 
+Authress Vanishing Keys is deployed to the [Authress Management Portal](https://authress.io) and is available for everyone to use for free.
+
+To send a secret to someone, just click below.
+
+Everything is open source, and **please validate that the passphrase and decrypted secret never leave your browser**.
+
 ## [Create a Secret](https://authress.io/app/#/vanish)
 Click `Create a Secret` to immediately share a secret using the free community version of the Authress Vanishing Keys service.
 

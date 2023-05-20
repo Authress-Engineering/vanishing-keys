@@ -3,6 +3,7 @@
 This is the public completely **open source** implementation of how Authress provides the Vanishing Keys service.
 
 ## [Create a Secret](https://authress.io/app/#/vanish)
+Click `Create a Secret` to immediately share a secret using the free community version of the Authress Vanishing Keys service.
 
 ## How it works
 * Enter your secret at [Authress Vanishing Keys](https://authress.io/app/#/vanish)

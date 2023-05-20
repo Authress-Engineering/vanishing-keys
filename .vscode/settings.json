@@ -1,0 +1,23 @@
+{
+    "search.exclude": {
+        "**/lib": true,
+        "lib/*": true
+    },
+    "cSpell.words": [
+        "agentkeepalive",
+        "edgelambda",
+        "exportparts",
+        "jszip",
+        "ONEZONE",
+        "sublicensees"
+    ],
+    "cSpell.ignoreRegExpList": [
+        "/\\w+([0-9]+\\w*)+/"
+    ],
+    "files.exclude": {
+        "**/lib": true,
+        "dist/**": true,
+        "lib/*": true,
+        "yarn-error.log": true
+    }
+}

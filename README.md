@@ -1,6 +1,8 @@
 # Authress OTS: One Time Secret
 
-This is the public completely **open source** implemenattion of how Authress provides the One Time Secret service.
+This is the public completely **open source** implementation of how Authress provides the One Time Secret service.
+
+## [Create a Secret](https://authress.io/app/#/ots)
 
 ## How it works
 * Enter your secret at [Authress One Time Secret](https://authress.io/app/#/ots)

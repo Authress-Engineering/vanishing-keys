@@ -79,7 +79,7 @@ try {
   const secretsController = require('./secretsController');
   api.post('/secrets', request => secretsController.createSecret(request));
   api.get('/secrets/{secretId}', request => secretsController.getSecret(request));
-  api.delete('/secrets/{Id}', request => secretsController.deleteSecret(request));
+  api.delete('/secrets/{secretId}', request => secretsController.deleteSecret(request));
 
   api.options('/{proxy+}', () => {
     return {

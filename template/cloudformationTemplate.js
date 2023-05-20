@@ -297,14 +297,14 @@ module.exports = {
         ],
         BillingMode: 'PROVISIONED',
         WriteProvisionedThroughputSettings: {
-          // WriteCapacityAutoScalingSettings: {
-          //   MaxCapacity: 1,
-          //   MinCapacity: 1,
-          //   SeedCapacity: 1,
-          //   TargetTrackingScalingPolicyConfiguration: {
-          //     TargetValue: 1
-          //   }
-          // }
+          WriteCapacityAutoScalingSettings: {
+            MaxCapacity: 1,
+            MinCapacity: 1,
+            SeedCapacity: 1,
+            TargetTrackingScalingPolicyConfiguration: {
+              TargetValue: 1
+            }
+          }
         },
         SSESpecification: {
           SSEEnabled: false

@@ -5,6 +5,8 @@ This is the public completely **open source** implementation of how Authress pro
 ## [Create a Secret](https://authress.io/app/#/vanish)
 Click `Create a Secret` to immediately share a secret using the free community version of the Authress Vanishing Keys service.
 
+[![Authress Vanish picture](./vanish.png)](https://authress.io/app/#/vanish)
+
 ## How it works
 * Enter your secret at [Authress Vanishing Keys](https://authress.io/app/#/vanish)
 * Vanish encrypts your secret on the UI side using a passphrase.

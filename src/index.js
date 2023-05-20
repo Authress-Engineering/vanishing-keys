@@ -77,6 +77,16 @@ try {
   module.exports = api;
 
   const secretsController = require('./secretsController');
+
+  api.get('/', () => {
+    return {
+      statusCode: 302,
+      headers: {
+        location: 'https://authress.io/app/#/vanish'
+      }
+    };
+  });
+
   api.post('/secrets', request => secretsController.createSecret(request));
   api.get('/secrets/{secretId}', request => secretsController.getSecret(request));
   api.delete('/secrets/{secretId}', request => secretsController.deleteSecret(request));

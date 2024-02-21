@@ -1,3 +1,7 @@
+<p id="main" align="center">
+  <img src="https://authress.io/static/images/linkedin-banner.png" alt="Authress media banner">
+</p>
+
 # Authress Vanishing Keys
 
 This is the public completely **open source** implementation of how Authress provides the Vanishing Keys service.

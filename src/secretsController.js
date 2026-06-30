@@ -8,7 +8,7 @@ const logger = require('./logger');
 
 class SecretsController {
   async createSecret(request) {
-    logger.log({ title: 'Secret Created', level: 'TRACK' });
+    logger.log({ title: 'Secret Created', level: 'WARN', levelThreshold: 1000 });
     const randomBytes = base64url.encode(crypto.randomBytes(64));
     const secretId = `${shortUuid('abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ346789').generate()}-${randomBytes}`;
 
@@ -54,7 +54,7 @@ class SecretsController {
   }
 
   async getSecret(request) {
-    logger.log({ title: 'Secret Fetched', level: 'TRACK' });
+    logger.log({ title: 'Secret Fetched', level: 'WARN', levelThreshold: 100 });
     const secretData = await secretsManager.fetchAndDeleteSecret(request.pathParameters.secretId);
     if (!secretData) {
       return {

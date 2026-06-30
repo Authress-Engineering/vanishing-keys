@@ -34,7 +34,7 @@ module.exports = {
         FunctionName: { Ref: 'serviceName' },
         Description: { Ref: 'serviceDescription' },
         Handler: 'index.handler',
-        Runtime: 'nodejs16.x',
+        Runtime: 'nodejs24.x',
         TracingConfig: {
           Mode: 'PassThrough'
         },
